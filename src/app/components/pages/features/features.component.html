@@ -1,1 +1,130 @@
-<p>features works!</p>
+<!-- <p>features works!</p> -->
+<div class="loginSection">
+  <form [formGroup]="Form" (ngSubmit)="onSubmit">
+    <div class="row">
+      <div class="col-lg-4">
+          <mat-form-field>
+              <input matInput placeholder="Name of proposer" formControlName="nominee_name" />
+              <mat-error>Name of proposer is <strong>required</strong> </mat-error>
+          </mat-form-field>
+      </div>
+
+      <div class="col-lg-4">
+          <mat-form-field>
+              <input matInput placeholder="Nationality" formControlName="nationality" />
+              <mat-error>Nationality is <strong>required</strong> </mat-error>
+          </mat-form-field>
+      </div>
+
+      <div class="col-lg-4">
+        <mat-form-field>
+          <input matInput placeholder="State" formControlName="state" />
+          <mat-error>State is <strong>required</strong> </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+          <input type="text" matInput placeholder="Enter Mobile No" formControlName="telephone_number" />
+          <mat-error>Phone No. is
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-4 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+          <input type="email" matInput placeholder="Enter Email" formControlName="email" />
+          <mat-error>Email is<strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-4 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <mat-label> Select Gender</mat-label>
+            <mat-select formControlName="gender">
+                <mat-option *ngFor="let gender of genders" [value]="gender.id">{{gender.name}}</mat-option>
+            </mat-select>
+            <mat-error>Event is <strong>required</strong> </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 kt-margin-bottom-20-mobile">
+        <div class="mat-form-field-fluid">
+          <mat-checkbox formControlName="option1">Option one</mat-checkbox>
+        </div>
+      </div>
+      <div class="col-lg-4 kt-margin-bottom-20-mobile">
+        <div class="mat-form-field-fluid">
+          <mat-checkbox formControlName="option1">Option two</mat-checkbox>
+        </div>
+      </div>
+      <div class="col-lg-4 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <mat-label class="mat-form-field-fluid"> Select Plan</mat-label>
+            <mat-select formControlName="plan">
+                <mat-option value="1">Plan 1</mat-option>
+                <mat-option value="2">Plan 2</mat-option>
+                <mat-option value="3">Plan 3</mat-option>
+                <mat-option value="4">Plan 4</mat-option>
+            </mat-select>
+            <mat-error>Plan is <strong>required</strong> </mat-error>
+        </mat-form-field>
+      </div>        
+    </div>
+    <div class="row">
+      <div class="col-lg-4 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="Start date" [min]="minDate" formControlName="insurance_from" [owlDateTimeTrigger]="dt" [owlDateTime]="dt"
+            (dateTimeInput)="setEndDate($event)" />
+            <owl-date-time #dt></owl-date-time>
+            <mat-error>Date is <strong>required</strong></mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-4 kt-margin-bottom-20-mobile">
+          <mat-form-field class="mat-form-field-fluid">
+              <input matInput placeholder="End date" [min]="minEndDate" formControlName="insurance_to" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" />
+              <owl-date-time #dt2></owl-date-time>
+              <mat-error>Date is <strong>required</strong></mat-error>
+          </mat-form-field>
+      </div>
+      <div class="col-lg-4 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="Date of birth" [max]="maxDate" formControlName="birth_date" [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3"/>
+            <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+            <mat-error>Date is <strong>required</strong> </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 kt-margin-bottom-20-mobile">
+            <mat-form-field class="mat-form-field-fluid">
+                <input type="number" matInput placeholder="Age" formControlName="age" />
+                <mat-error>Age is <strong>required</strong> </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-8">
+        <mat-form-field>
+            <textarea rows="3" cols="50" matInput placeholder="Enter Residential Address"
+                formControlName="residential_address"></textarea>
+                <mat-error>Address is <strong>required</strong> </mat-error>
+            </mat-form-field>
+        </div>
+      
+    </div>
+  
+    <div class="row text-right">
+        <div class="col-lg-12">
+            <a class="btn btn-secondary kt-margin-r-10" (click)="reset()" mat-raised-button
+                matTooltip="Reset changes">
+                <i class="la la-cog"></i>
+                <span class="kt-hidden-mobile">Reset</span>
+            </a>&nbsp;
+            <button type="button" mat-raised-button color="primary" (click)="onSubmit()"
+                [disabled]="Form.invalid" matTooltip="Save changes">
+                Save
+            </button>
+        </div>
+    </div>
+  </form>
+</div>

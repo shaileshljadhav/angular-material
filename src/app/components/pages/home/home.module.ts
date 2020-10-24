@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { Routes, RouterModule } from '@angular/router';
 
+import {
+	MatCheckboxModule
+} from '@angular/material';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
 ];
@@ -11,7 +15,8 @@ const routes: Routes = [
   declarations: [HomeComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MatCheckboxModule
   ],
   exports: [RouterModule]
 })

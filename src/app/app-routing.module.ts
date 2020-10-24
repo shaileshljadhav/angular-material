@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/pages/home/home.component';
+// import { HomeComponent } from './components/pages/home/home.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  // { path: '', component: HomeComponent },
+  { 
+    path: '', 
+    loadChildren: () => import('./components/pages/home/home.module')
+      .then(mod => mod.HomeModule) },
   {
     path: 'features',
     loadChildren: () => import('./components/pages/features/features.module')
@@ -15,7 +19,7 @@ const routes: Routes = [
   //   loadChildren: () => import('./modules/general/about/about.module')
   //     .then(mod => mod.AboutModule)
   // },
-  { path: '**', component: HomeComponent }
+  // { path: '**', component: HomeComponent }
 ];
 
 @NgModule({
